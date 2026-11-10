@@ -1,32 +1,44 @@
-# React + TypeScript + Vite
+﻿# 한입 퀴즈
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+웹앱과 AI에 관한 한국어 OX 퀴즈입니다. React + TypeScript + Vite로 만들었으며 로그인, 데이터베이스, 외부 API 없이 동작합니다.
 
-Currently, two official plugins are available:
+## 실행
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+PowerShell에서 스크립트 실행 정책 오류가 발생하면 `npm.cmd install`, `npm.cmd run dev`를 사용하세요.
+터미널에 표시되는 로컬 주소로 접속하세요.
+
+## 빌드
+
+```sh
+npm run build
+npm run preview
+```
+
+빌드 결과는 `dist`에 생성됩니다.
+
+## 퀴즈
+
+- 쉬운 문제 5개를 한 문제씩 표시합니다.
+- 답변 후에는 선택을 잠그고 정답과 해설을 표시합니다.
+- 마지막 문제 뒤에 총점(문제당 20점)과 다시 풀기를 표시합니다.
+- 새로고침하거나 다시 풀기를 누르면 처음부터 시작합니다.
+- 문제와 해설은 `src/App.tsx`의 `questions`에서 수정할 수 있습니다.
+
+## 수동 확인
+
+1. O, X, X, O, X 순서로 답하고 문제마다 다음 버튼을 누르면 100점이 표시됩니다.
+2. X, O, O, X, O 순서로 답하면 0점이 표시됩니다.
+3. 다시 풀기를 누르면 첫 문제로 돌아가고 점수가 초기화됩니다.
+4. 답변한 문제의 O/X 버튼은 비활성화되며 점수가 중복으로 올라가지 않습니다.
+5. 좁은 모바일 화면과 키보드 Tab/Enter로도 사용해 보세요.
+
+## Vercel 배포
+
+변경 사항을 GitHub 저장소에 커밋하고 push한 다음 Vercel에서 저장소를 가져오세요.
+이 프로젝트의 프레임워크는 Vite, 빌드 명령은 `npm run build`, 출력 디렉터리는 `dist`입니다.
+환경 변수는 필요하지 않습니다.
